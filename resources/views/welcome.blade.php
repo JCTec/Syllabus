@@ -64,31 +64,26 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-color: #FF8000;background-image: url('{{ asset('img/foto_anahuac.jpg') }}'); background-repeat: no-repeat;background-size: 100% 100%; color: white;">
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}" style="color: white;">Login</a>
+                        <a href="{{ route('register') }}" style="color: white;">Register</a>
                     @endauth
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
+                <div class="title m-b-md" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 20px">
+                    iCompetence
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+
                 </div>
             </div>
         </div>
