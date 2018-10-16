@@ -5,6 +5,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import 'jquery-ui/ui/widgets/draggable.js';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -20,3 +22,5 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 const app = new Vue({
     el: '#app'
 });
+
+window.$ = window.jQuery = require('jquery');

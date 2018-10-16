@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Syllabus') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -48,6 +48,117 @@
 
         });
     </script>
+
+    <style>
+        .buttonIC {
+            border-radius: 15px;
+            background-color: #0069D7;
+            height: 40px;
+            width: 100px;
+            border-color: #0069D7;
+            border-style: solid;
+            color: white;
+            cursor: pointer;
+            float: right;
+        }
+
+        .buttonIC:hover {
+            background-color: #005ebb;
+            border-color: #005ebb;
+
+        }
+
+        .competenciaLabel {
+            background-color: white;
+            text-align: center;
+            align-content: center;
+        }
+
+        .competenciaLabel label {
+            font-size: 15px;
+            display: block;
+            text-align: center;
+            align-content: center;
+            width: 100%;
+            height: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+
+        }
+
+        .rowCompetencia {
+            background-color: #F2F2F2;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .competencia {
+            background-color: white;
+            width: 90%;
+            height: 60px;
+            display: flex;
+            border-radius: 20px;
+            text-align: center;
+            align-content: center;
+            vertical-align: middle;
+            margin-top: 20px;
+            margin-bottom: 20px;
+
+        }
+
+
+        .competencia h6 {
+            color: black;
+            padding-left: 10%;
+            display: flex;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            align-content: center;
+            vertical-align: middle;
+            align-items: center;
+
+        }
+
+        .mainRow {
+            margin-top: 20px;
+            background-color: #fd7203;
+            height: 50px;
+            border-left: 1px solid #D5D5D5;
+        }
+
+        .subRow {
+            background-color: white;
+            height: 50px;
+            border-left: 1px solid #D5D5D5;
+
+        }
+
+        .sec{
+            border-right: 1px solid #D5D5D5;
+        }
+
+        #syllabusTable tr td{
+            border-right:1px solid #d5d5d5;
+            border-bottom:1px solid #D5D5D5;
+        }
+
+        #syllabusTable {
+            background: #fff none repeat scroll 0 0;
+            border-left: 1px solid #D5D5D5;
+            border-top: 1px solid #D5D5D5;
+            height: 100%;
+            width: 100%;
+            table-layout: fixed;
+        }
+
+
+
+        .competenceS{
+
+        }
+    </style>
 </head>
 <body>
 <div id="app">
@@ -56,69 +167,31 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h3>Bootstrap Sidebar</h3>
+                <!--<img src="{{asset('img/anahuac.png')}}" width="30%" height="30%">--> <h3>Universidad Anáhuac Mayab</h3>
             </div>
 
             <ul class="list-unstyled components">
-                <p>Dummy Heading</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu">
-                        <li>
-                            <a href="#">Home 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Home 3</a>
-                        </li>
-                    </ul>
-                </li>
+                <p>Administrador de Competencias</p>
+
                 <li>
-                    <a href="#">About</a>
+                    <a href="{{route('crearPlanDeEstudios')}}">Crear Plan de Estudios</a>
                 </li>
+
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Pages</a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
-                        <li>
-                            <a href="#">Page 1</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Portfolio</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="{{route('mapaDeEstudios')}}">Mapa de estudios</a>
                 </li>
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Download source</a>
-                </li>
-                <li>
-                    <a href="https://bootstrapious.com/p/bootstrap-sidebar" class="article">Back to article</a>
-                </li>
-            </ul>
         </nav>
 
         <!-- Page Content  -->
-        <div id="content">
+        <div id="content" style="background-color: #E7E5E6">
 
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
 
-                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <button type="button" id="sidebarCollapse" class="btn btn-info" style="background-color: #fd8023; border-color: #fd8023;">
                         <i class="fas fa-align-left"></i>
-                        <span>Toggle Sidebar</span>
                     </button>
                     <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fas fa-align-justify"></i>
@@ -126,14 +199,9 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
+
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Page</a>
+                                <a class="nav-link"> {{ Auth::user()->name }} </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();

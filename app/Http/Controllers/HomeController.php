@@ -25,4 +25,14 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function mapaDeEstudios()
+    {
+        return view('mapaDeEstudios');
+    }
+
+    public function crearPlanDeEstudios()
+    {
+        return view('crearPlanDeEstudios');
+    }
 }
