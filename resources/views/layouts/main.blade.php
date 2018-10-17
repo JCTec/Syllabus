@@ -153,8 +153,6 @@
             table-layout: fixed;
         }
 
-
-
         .competenceS{
 
         }
