@@ -12,11 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/crearPlanDeEstudios', 'HomeController@crearPlanDeEstudios')->name('crearPlanDeEstudios');
 Route::get('/mapaDeEstudios', 'HomeController@mapaDeEstudios')->name('mapaDeEstudios');
+
+Route::get('/setCState', 'CompetenciasController@setCState')->name('setCState');
+
+

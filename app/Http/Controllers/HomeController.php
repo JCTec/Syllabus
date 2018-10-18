@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Materia;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -16,16 +17,6 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
-    }
-
     public function mapaDeEstudios()
     {
         return view('mapaDeEstudios');
@@ -33,6 +24,9 @@ class HomeController extends Controller
 
     public function crearPlanDeEstudios()
     {
-        return view('crearPlanDeEstudios');
+        $materias = Materia::select('*')->get();
+
+
+        return view('crearPlanDeEstudios')->with(['materias' => $materias]);
     }
 }

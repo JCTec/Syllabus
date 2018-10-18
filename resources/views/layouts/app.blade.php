@@ -145,6 +145,7 @@
         }
 
         #syllabusTable {
+            margin-top: 30px;
             background: #fff none repeat scroll 0 0;
             border-left: 1px solid #D5D5D5;
             border-top: 1px solid #D5D5D5;
@@ -153,15 +154,11 @@
             table-layout: fixed;
         }
 
-        .competenceS{
-
-        }
 
         .SyllabusNav {
-            width: 100%;
+            width: 110%;
             height: 30px;
             background-color: black;
-            border-left: white solid 1px;
         }
 
         .SyllabusNav .col {
@@ -187,11 +184,6 @@
         .table .row .col {
             text-align: center;
         }
-
-        tr:first-child td:first-child { border-top-left-radius: 10px; }
-        tr:first-child td:last-child { border-top-right-radius: 10px; }
-        tr:last-child td:first-child { border-bottom-left-radius: 10px; }
-        tr:last-child td:last-child { border-bottom-right-radius: 10px; }
 
     </style>
 </head>
@@ -248,23 +240,27 @@
             </div>
         </nav>
 
-        <div class="SyllabusNav row">
-            <div class="col">
-                <h4><a>2010</a></h4>
+        @if(Request::url() != route('login') && Request::url() != route('logout') && Request::url() != route('register'))
+
+            <div class="SyllabusNav row">
+                <div class="col">
+                    <h4><a>2010</a></h4>
+                </div>
+
+                <div class="col">
+                    <h4><a>2011</a></h4>
+                </div>
+
+                <div class="col">
+                    <h4><a>2012</a></h4>
+                </div>
+
+                <div class="col-8">
+                    <h4></h4>
+                </div>
             </div>
 
-            <div class="col">
-                <h4><a>2011</a></h4>
-            </div>
-
-            <div class="col">
-                <h4><a>2012</a></h4>
-            </div>
-
-            <div class="col-8">
-                <h4></h4>
-            </div>
-        </div>
+        @endif
 
         <main class="py-4">
             @yield('content')
