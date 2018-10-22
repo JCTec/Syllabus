@@ -19,7 +19,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
@@ -48,6 +50,8 @@
     </script>
 
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+
         .buttonIC {
             border-radius: 15px;
             background-color: #0069D7;
@@ -139,19 +143,28 @@
             border-right: 1px solid #D5D5D5;
         }
 
-        #syllabusTable tr td{
-            border-right:1px solid #d5d5d5;
-            border-bottom:1px solid #D5D5D5;
+        #syllabusTable tr:first-child td {
+            border-radius: 0;
+            font-family: 'Roboto Condensed' SansSerif;
         }
+
+        #syllabusTable tr td{
+            border: none;
+            height: 15px;
+            border-radius: 10%;
+            overflow: hidden;
+            white-space: nowrap;
+            font-family: 'Roboto' SansSerif;
+        }
+
 
         #syllabusTable {
             margin-top: 30px;
             background: #fff none repeat scroll 0 0;
-            border-left: 1px solid #D5D5D5;
-            border-top: 1px solid #D5D5D5;
             height: 100%;
             width: 100%;
             table-layout: fixed;
+            border: none;
         }
 
 
@@ -192,8 +205,10 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{asset('img/anahuac.png')}}" width="30px" height="30px">
+                    {{ config('app.name', 'Syllabus') }}
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

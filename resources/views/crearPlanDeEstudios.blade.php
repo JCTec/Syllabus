@@ -18,15 +18,15 @@
 
                                 if(val){
                                     if(val == 0){
-                                        $(this).css('background-color', '#00afff');
+                                        $(this).css('background-color', '#ffd99c');
                                         inp.val(1);
 
                                     }else if (val == 1){
-                                        $(this).css('background-color', '#35e300');
+                                        $(this).css('background-color', '#ffb34c');
                                         inp.val(2);
 
                                     }else if(val == 2){
-                                        $(this).css('background-color', '#ff8700');
+                                        $(this).css('background-color', '#ff8300');
                                         inp.val(3);
 
                                     }else{
@@ -73,10 +73,10 @@
                         </div>
                     </div>
 
-                    <table id="syllabusTable">
+                    <table id="syllabusTable" cellspacing="0" cellpadding="0">
                         <tr class="mainRow">
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">Hola</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">Hola</td>
+                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;width:7%;height:7%;">Código</td>
+                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;width:15%;height:25%;">Matería</td>
                             <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C1</td>
                             <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C2</td>
                             <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C3</td>
@@ -90,41 +90,41 @@
                         </tr>
 
                         <?php
-                            class ColorHelper {
+                        class ColorHelper {
 
-                                function getColor($val) {
-                                    if($val == 1){
-                                        return '#00afff';
+                            function getColor($val) {
+                                if($val == 1){
+                                    return '#ffd99c';
 
-                                    }else if ($val == 2){
-                                        return '#35e300';
+                                }else if ($val == 2){
+                                    return '#ffb34c';
 
-                                    }else if($val == 3){
-                                        return '#ff8700';
+                                }else if($val == 3){
+                                    return '#ff8300';
 
-                                    }else{
-                                        return 'white';
+                                }else{
+                                    return 'white';
 
-                                    }
                                 }
                             }
+                        }
                         ?>
 
                         @foreach($materias as $materia)
 
                             <?php
 
-                                $colorHelper = new ColorHelper();
-                                $c1 = $colorHelper->getColor($materia->c1);
-                                $c2 = $colorHelper->getColor($materia->c2);
-                                $c3 = $colorHelper->getColor($materia->c3);
-                                $c4 = $colorHelper->getColor($materia->c4);
-                                $c5 = $colorHelper->getColor($materia->c5);
-                                $c6 = $colorHelper->getColor($materia->c6);
-                                $c7 = $colorHelper->getColor($materia->c7);
-                                $c8 = $colorHelper->getColor($materia->c8);
-                                $c9 = $colorHelper->getColor($materia->c9);
-                                $c10 = $colorHelper->getColor($materia->c10);
+                            $colorHelper = new ColorHelper();
+                            $c1 = $colorHelper->getColor($materia->c1);
+                            $c2 = $colorHelper->getColor($materia->c2);
+                            $c3 = $colorHelper->getColor($materia->c3);
+                            $c4 = $colorHelper->getColor($materia->c4);
+                            $c5 = $colorHelper->getColor($materia->c5);
+                            $c6 = $colorHelper->getColor($materia->c6);
+                            $c7 = $colorHelper->getColor($materia->c7);
+                            $c8 = $colorHelper->getColor($materia->c8);
+                            $c9 = $colorHelper->getColor($materia->c9);
+                            $c10 = $colorHelper->getColor($materia->c10);
 
                             ?>
                             <tr id="{{$materia->id}}">
