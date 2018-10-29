@@ -32,7 +32,7 @@ return [
     */
 
     'connections' => [
-/*
+
         'sqlite' => [
             'driver' => 'sqlite',
             'database' => env('DB_DATABASE', database_path('database.sqlite')),
@@ -76,7 +76,7 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
-        ],*/
+        ],
 
         'mongodb' => [
             'driver'   => 'mongodb',
