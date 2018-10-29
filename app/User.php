@@ -5,10 +5,16 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Jenssegers\Mongodb\Eloquent\HybridRelations;
+
 
 class User extends Authenticatable
 {
     use Notifiable;
+
+    use HybridRelations;
+
+    protected $connection = 'mysql';
 
     /**
      * The attributes that are mass assignable.

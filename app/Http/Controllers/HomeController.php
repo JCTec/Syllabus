@@ -22,6 +22,10 @@ class HomeController extends Controller
         return view('mapaDeEstudios');
     }
 
+    public function test(){
+        return Materia::all();
+    }
+
     public function crearPlanDeEstudios()
     {
         $materias = Materia::select('*')->get();

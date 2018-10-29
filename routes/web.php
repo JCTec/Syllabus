@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/crearPlanDeEstudios', 'HomeController@crearPlanDeEstudios')->name('crearPlanDeEstudios');
 Route::get('/mapaDeEstudios', 'HomeController@mapaDeEstudios')->name('mapaDeEstudios');
+Route::get('/test', 'HomeController@test')->name('test');
 
 Route::get('/setCState', 'CompetenciasController@setCState')->name('setCState');
 

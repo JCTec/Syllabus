@@ -3,14 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
-class Materia extends Model
+class Materia extends Eloquent
 {
-    protected $table = 'materias';
+    protected $collection = 'materias';
 
-    protected $primaryKey = 'id';
+    protected $primaryKey = '_id';
 
     protected $fillable = [
-        'codigo','nombre','semestre','creditos','bloque'
+        'CARRERA','BLOQUE','SEMESTRE','ASIGNATURA','CLAVE', 'CRÉDITOS', 'GRADO', 'COMPETENCIAS',
     ];
+
 }
