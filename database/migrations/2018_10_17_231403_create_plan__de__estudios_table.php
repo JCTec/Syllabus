@@ -16,8 +16,9 @@ class CreatePlanDeEstudiosTable extends Migration
         Schema::create('planes_de_estudio', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('carrera')->unsigned()->index();
-            $table->foreign('carrera')->references('id')->on('carreras');
-            $table->string('codigo');
+            $table->string('codigo_plan');
+            $table->string('numero_semestres');
+            $table->string('division');
             $table->timestamps();
         });
     }

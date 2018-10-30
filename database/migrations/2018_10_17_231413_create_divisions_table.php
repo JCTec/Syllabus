@@ -13,10 +13,12 @@ class CreateDivisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('divisions', function (Blueprint $table) {
+        Schema::create('competencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo');
-            $table->string('nombre');
+            $table->string('COMPETENCIA');
+            $table->string('ALIAS');
+            $table->string('DESCRIPCION');
+            $table->string('CARERRA');
             $table->timestamps();
         });
     }

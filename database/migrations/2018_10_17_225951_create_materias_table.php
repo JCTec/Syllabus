@@ -15,21 +15,15 @@ class CreateMateriasTable extends Migration
     {
         Schema::create('materias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo');
-            $table->integer('semestre');
-            $table->string('nombre');
-            $table->integer('creditos');
-            $table->string('bloque');
-            $table->string('c1')->default('0');
-            $table->string('c2')->default('0');
-            $table->string('c3')->default('0');
-            $table->string('c4')->default('0');
-            $table->string('c5')->default('0');
-            $table->string('c6')->default('0');
-            $table->string('c7')->default('0');
-            $table->string('c8')->default('0');
-            $table->string('c9')->default('0');
-            $table->string('c10')->default('0');
+            $table->string('CARRERA');
+            $table->string('BLOQUE');
+            $table->string('SEMESTRE');
+            $table->string('ASIGNATURA');
+            $table->string('CLAVE');
+            $table->string('CREDITOS');
+            $table->string('GRADO');
+            $table->string('COMPETENCIAS');
+            $table->string('COLUMNA');
             $table->timestamps();
         });
     }

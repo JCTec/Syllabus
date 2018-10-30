@@ -993,3 +993,31 @@
 #24 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/public/index.php(55): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #25 {main}
 "} 
+[2018-10-30 00:18:18] local.ERROR: Class 'MongoDB\Driver\Manager' not found {"exception":"[object] (Symfony\\Component\\Debug\\Exception\\FatalThrowableError(code: 0): Class 'MongoDB\\Driver\\Manager' not found at /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/mongodb/mongodb/src/Client.php:87)
+[stacktrace]
+#0 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Connection.php(141): MongoDB\\Client->__construct('mongodb://127.0...', Array, Array)
+#1 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/Connection.php(41): Jenssegers\\Mongodb\\Connection->createConnection('mongodb://127.0...', Array, Array)
+#2 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/jenssegers/mongodb/src/Jenssegers/Mongodb/MongodbServiceProvider.php(30): Jenssegers\\Mongodb\\Connection->__construct(Array)
+#3 [internal function]: Jenssegers\\Mongodb\\MongodbServiceProvider->Jenssegers\\Mongodb\\{closure}(Array, 'mongodb')
+#4 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(109): call_user_func(Object(Closure), Array, 'mongodb')
+#5 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(74): Illuminate\\Database\\DatabaseManager->makeConnection('mongodb')
+#6 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Support/Facades/Schema.php(34): Illuminate\\Database\\DatabaseManager->connection()
+#7 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(130): Illuminate\\Support\\Facades\\Schema::getFacadeAccessor()
+#8 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(217): Illuminate\\Support\\Facades\\Facade::getFacadeRoot()
+#9 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/app/Providers/AppServiceProvider.php(17): Illuminate\\Support\\Facades\\Facade::__callStatic('defaultStringLe...', Array)
+#10 [internal function]: App\\Providers\\AppServiceProvider->boot()
+#11 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(29): call_user_func_array(Array, Array)
+#12 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(87): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#13 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(31): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#14 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Container/Container.php(572): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#15 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(793): Illuminate\\Container\\Container->call(Array)
+#16 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(776): Illuminate\\Foundation\\Application->bootProvider(Object(App\\Providers\\AppServiceProvider))
+#17 [internal function]: Illuminate\\Foundation\\Application->Illuminate\\Foundation\\{closure}(Object(App\\Providers\\AppServiceProvider), 19)
+#18 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(777): array_walk(Array, Object(Closure))
+#19 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\\Foundation\\Application->boot()
+#20 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(206): Illuminate\\Foundation\\Bootstrap\\BootProviders->bootstrap(Object(Illuminate\\Foundation\\Application))
+#21 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(297): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#22 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(120): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#23 /Applications/XAMPP/xamppfiles/htdocs/iCompetence/artisan(37): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#24 {main}
+"} 
