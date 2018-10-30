@@ -11,19 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
 
 Auth::routes();
 
 Route::get('/crearPlanDeEstudios', 'HomeController@crearPlanDeEstudios')->name('crearPlanDeEstudios');
 Route::get('/mapaDeEstudios', 'HomeController@mapaDeEstudios')->name('mapaDeEstudios');
-Route::get('/test', 'HomeController@test')->name('test');
 
 Route::get('/setCState', 'CompetenciasController@setCState')->name('setCState');
 
-Route::get('/test', 'CompetenciasController@test')->name('test');
+Route::get('/', 'HomeController@dashboard')->name('dashboard');
 
 
 

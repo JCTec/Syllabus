@@ -49,7 +49,4 @@ class CompetenciasController extends Controller
         }
     }
 
-    public function test(){
-        return Competencia::where('CARRERA','=','LC-IINF-16')->get();
-    }
 }

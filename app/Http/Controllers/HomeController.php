@@ -22,6 +22,33 @@ class HomeController extends Controller
         return view('mapaDeEstudios');
     }
 
+    public function dashboard()
+    {
+        $materias = Materia::orderBy('division')->get();
+
+        $bloques = [];
+
+        $temp = [];
+
+        $last = $materias[0]->division;
+
+        foreach ($materias as $materia){
+            if($last != $materia->division){
+                array_push($bloques, $temp);
+
+                $temp = [];
+
+                $last = $materia->division;
+
+                array_push($temp, $materia);
+            }else{
+                array_push($temp, $materia);
+            }
+        }
+
+        return view('dashboard')->with(['bloques' => $bloques]);
+    }
+
     public function test(){
         return Materia::all();
     }

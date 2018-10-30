@@ -7,21 +7,25 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-3 my-2 py-3 border-left border-right border-bottom border-top">
-                            <div class="container">
-                                <p class="h4">División de ingeniería y ciencias exactas</p>
-                                <hr color="#e58a00" width="100%" style="height:3px">
-                                <ul>
-                                    <li>Ingeniería informática y en negocios digitales</li>
-                                    <li>Ingeniería mecatrónica</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-3 my-2">
-                            <div class="container">
 
+                        @foreach($bloques as $bloque)
+
+                            <div class="col-3 my-2 py-3 border-left border-right border-bottom border-top">
+                                <div class="container">
+                                    <p class="h4">{{$bloque[0]->division}}</p>
+                                    <hr color="#e58a00" width="100%" style="height:3px">
+                                    <ul>
+
+                                        @foreach($bloque as $materia)
+                                            <li>{{$materia->carrera}}</li>
+                                        @endforeach
+
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
+
+                        @endforeach
+
                     </div>
 
                 </div>
