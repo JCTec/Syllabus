@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Materia;
+use App\Plan_De_Estudio;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,17 +25,20 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        $materias = Materia::orderBy('division')->get();
+        $materias = Plan_De_Estudio::orderBy('division')->get();
 
         $bloques = [];
 
         $temp = [];
 
-        $last = $materias[0]->division;
+        $last = "$$";
 
         foreach ($materias as $materia){
             if($last != $materia->division){
-                array_push($bloques, $temp);
+
+                if($last != "$$"){
+                    array_push($bloques, $temp);
+                }
 
                 $temp = [];
 

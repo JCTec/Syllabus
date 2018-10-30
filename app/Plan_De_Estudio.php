@@ -8,7 +8,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 class Plan_De_Estudio extends Eloquent
 {
-    protected $table = 'planDeStudio';
+    protected $table = 'planes_de_estudio';
 
     protected $primaryKey = '_id';
 
