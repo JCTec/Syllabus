@@ -23,4 +23,7 @@ Route::get('/test', 'HomeController@test')->name('test');
 
 Route::get('/setCState', 'CompetenciasController@setCState')->name('setCState');
 
+Route::get('/test', 'CompetenciasController@test')->name('test');
+
+
 

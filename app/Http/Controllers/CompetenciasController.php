@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Competencia;
 use App\Materia;
 use Illuminate\Http\Request;
 
@@ -46,5 +47,9 @@ class CompetenciasController extends Controller
         }else{
             return response()->json(['message' => 'Error'], 500);
         }
+    }
+
+    public function test(){
+        return Competencia::all();
     }
 }
