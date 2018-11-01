@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Competencia;
+use App\competencias_materias;
 use App\Materia;
 use Illuminate\Http\Request;
 
@@ -11,37 +12,53 @@ class CompetenciasController extends Controller
 
     public function setCState(){
 
-        if(request()->has('id') && request()->has('competencias') && request()->has('value')){
+        if(request()->has('id') && request()->has('competencia') && request()->has('value')){
 
-            $materia = Materia::where('id', '=', request()->get('id'))->first();
+            $idToLook = request()->get('id');
 
-            $competencias = request()->get('competencias');
+            $materiaX = Materia::findOrFail($idToLook);
+
+            $competencias = request()->get('competencia');
 
             if($competencias == 1){
-                $materia->c1 = request()->get('value');
+                $toLook = "C1";
             }else if ($competencias == 2){
-                $materia->c2 = request()->get('value');
+                $toLook = "C2";
             }else if ($competencias == 3){
-                $materia->c3 = request()->get('value');
+                $toLook = "C3";
             }else if ($competencias == 4){
-                $materia->c4 = request()->get('value');
+                $toLook = "C4";
             }else if ($competencias == 5){
-                $materia->c5 = request()->get('value');
+                $toLook = "C5";
             }else if ($competencias == 6){
-                $materia->c6 = request()->get('value');
+                $toLook = "C6";
             }else if ($competencias == 7){
-                $materia->c7 = request()->get('value');
+                $toLook = "C7";
             }else if ($competencias == 8){
-                $materia->c8 = request()->get('value');
+                $toLook = "C8";
             }else if ($competencias == 9){
-                $materia->c9 = request()->get('value');
+                $toLook = "C9";
             }else if ($competencias == 10){
-                $materia->c10 = request()->get('value');
+                $toLook = "C10";
             }else{
-                return response()->json(['message' => 'Error'], 500);
+                return response()->json(['message' => 'Number not supported'], 500);
             }
 
-            $materia->saveOrFail();
+            $competence = competencias_materias::where('Materia','=', $idToLook)->where('Competencia', '=', $toLook)->first();
+
+            if($competence){
+                $competence->Value = (int) request()->get('value');
+
+                $competence->save();
+            }else{
+                $c = new competencias_materias();
+
+                $c->Materia = $idToLook;
+                $c->Competencia = $toLook;
+                $c->Value = (int) request()->get('value');
+
+                $c->save();
+            }
 
             return response()->json(['status' => 'Success']);
         }else{

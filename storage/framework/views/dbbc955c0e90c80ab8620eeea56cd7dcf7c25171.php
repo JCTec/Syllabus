@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -36,7 +34,7 @@
                                     }
                                 }
 
-                                var route = "{{route('setCState')}}?id="+ $(this).parent().attr('id') + "&competencia=" + inp.attr('id') + "&value=" + inp.val();
+                                var route = "<?php echo e(route('setCState')); ?>?id="+ $(this).parent().attr('id') + "&competencia=" + inp.attr('id') + "&value=" + inp.val();
 
                                 $.ajax({
                                     type: "GET",
@@ -54,7 +52,7 @@
                     </script>
 
                     <div class="row" style="text-align: center">
-                        <h6 style="text-align: center">{{json_decode($plan, true)["carrera"]}}</h6>
+                        <h6 style="text-align: center"><?php echo e(json_decode($plan, true)["carrera"]); ?></h6>
                     </div>
 
                     <table id="syllabusTable" cellspacing="0" cellpadding="0">
@@ -94,7 +92,7 @@
                         }
                         ?>
 
-                        @foreach($materias as $materiaX)
+                        <?php $__currentLoopData = $materias; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $materiaX): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
                             <?php
 
@@ -124,6 +122,7 @@
                             $C8V = 0;
                             $C9V = 0;
                             $C10V = 0;
+
 
                             foreach ($com as $competencia){
 
@@ -171,26 +170,28 @@
 
                             ?>
 
-                            <tr id="{{$materia["_id"]}}">
-                                <td>{{$materia["CLAVE"]}}</td>
-                                <td>{{$materia["ASIGNATURA"]}}</td>
-                                <td style="background-color: {{$c1}};"><div class="competenceS"><input id="1" value={{$C1V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c2}};"><div class="competenceS"><input id="2" value={{$C2V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c3}};"><div class="competenceS"><input id="3" value={{$C3V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c4}};"><div class="competenceS"><input id="4" value={{$C4V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c5}};"><div class="competenceS"><input id="5" value={{$C5V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c6}};"><div class="competenceS"><input id="6" value={{$C6V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c7}};"><div class="competenceS"><input id="7" value={{$C7V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c8}};"><div class="competenceS"><input id="8" value={{$C8V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c9}};"><div class="competenceS"><input id="9" value={{$C9V}} type="hidden"></div></td>
-                                <td style="background-color: {{$c10}};"><div class="competenceS"><input id="10" value={{$C10V}} type="hidden"></div></td>
+                            <tr id="<?php echo e($materia["_id"]); ?>">
+                                <td><?php echo e($materia["CLAVE"]); ?></td>
+                                <td><?php echo e($materia["ASIGNATURA"]); ?></td>
+                                <td style="background-color: <?php echo e($c1); ?>;"><div class="competenceS"><input id="1" value=<?php echo e($C1V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c2); ?>;"><div class="competenceS"><input id="2" value=<?php echo e($C2V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c3); ?>;"><div class="competenceS"><input id="3" value=<?php echo e($C3V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c4); ?>;"><div class="competenceS"><input id="4" value=<?php echo e($C4V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c5); ?>;"><div class="competenceS"><input id="5" value=<?php echo e($C5V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c6); ?>;"><div class="competenceS"><input id="6" value=<?php echo e($C6V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c7); ?>;"><div class="competenceS"><input id="7" value=<?php echo e($C7V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c8); ?>;"><div class="competenceS"><input id="8" value=<?php echo e($C8V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c9); ?>;"><div class="competenceS"><input id="9" value=<?php echo e($C9V); ?> type="hidden"></div></td>
+                                <td style="background-color: <?php echo e($c10); ?>;"><div class="competenceS"><input id="10" value=<?php echo e($C10V); ?> type="hidden"></div></td>
                             </tr>
 
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
 
                 </form>
             </div>
         </div>
     </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

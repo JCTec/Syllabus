@@ -14,12 +14,12 @@
 
 Auth::routes();
 
-Route::get('/crearPlanDeEstudios', 'HomeController@crearPlanDeEstudios')->name('crearPlanDeEstudios');
-Route::get('/mapaDeEstudios', 'HomeController@mapaDeEstudios')->name('mapaDeEstudios');
-
 Route::get('/setCState', 'CompetenciasController@setCState')->name('setCState');
 
+Route::get('/mapaDeEstudios/{id}', 'HomeController@mapaDeEstudios')->name('mapaDeEstudios');
+
 Route::get('/', 'HomeController@dashboard')->name('dashboard');
+
 
 
 

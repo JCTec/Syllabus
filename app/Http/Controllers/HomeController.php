@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\competencias_materias;
 use App\Materia;
 use App\Plan_De_Estudio;
 use Illuminate\Http\Request;
@@ -18,14 +19,32 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    public function mapaDeEstudios()
+    public function mapaDeEstudios($id)
     {
-        return view('mapaDeEstudios');
+        $plan = Plan_De_Estudio::where('_id','=',$id)->first();
+
+        $toSend = [];
+
+        $materias = Materia::select('*')->where(chr(239) . chr(187) . chr(191) .'CARRERA','=',$plan->codigo_plan)->get();
+
+        foreach ($materias as $p){
+
+            $myPlan = json_decode($p, true);
+
+            $competence = competencias_materias::where('Materia', '=', $myPlan["_id"])->get();
+
+            $myPlan["COMPETENCIAS"] = $competence;
+
+            array_push($toSend, json_encode($myPlan));
+        }
+
+        return view('mapaDeEstudios')->with(['plan' => $plan, 'materias' => $toSend]);
     }
 
     public function dashboard()
     {
         $materias = Plan_De_Estudio::orderBy('division')->get();
+
 
         $bloques = [];
 
@@ -50,18 +69,9 @@ class HomeController extends Controller
             }
         }
 
+        array_push($bloques, $temp);
+
         return view('dashboard')->with(['bloques' => $bloques]);
     }
 
-    public function test(){
-        return Materia::all();
-    }
-
-    public function crearPlanDeEstudios()
-    {
-        $materias = Materia::select('*')->get();
-
-
-        return view('crearPlanDeEstudios')->with(['materias' => $materias]);
-    }
 }

@@ -45,7 +45,7 @@ return [
             'port' => '3306',
             'database' => 'syllabus',
             'username' => 'root',
-            'password' => '654321',
+            'password' => 'Estevez1',
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

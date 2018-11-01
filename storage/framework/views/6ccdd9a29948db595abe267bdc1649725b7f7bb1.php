@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>{{ config('app.name', 'Syllabus') }}</title>
+    <title><?php echo e(config('app.name', 'Syllabus')); ?></title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -19,8 +19,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/Sidebar.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/Sidebar.css')); ?>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
@@ -165,19 +165,12 @@
         <!-- Sidebar  -->
         <nav id="sidebar">
             <div class="sidebar-header">
-                <!--<img src="{{asset('img/anahuac.png')}}" width="30%" height="30%">--> <h3>Universidad Anáhuac Mayab</h3>
+                <!--<img src="<?php echo e(asset('img/anahuac.png')); ?>" width="30%" height="30%">--> <h3>Universidad Anáhuac Mayab</h3>
             </div>
 
             <ul class="list-unstyled components">
                 <p>Administrador de Competencias</p>
-
-                <li>
-                    <a href="{{route('crearPlanDeEstudios')}}">Crear Plan de Estudios</a>
-                </li>
-
-                <li>
-                    <a href="{{route('mapaDeEstudios')}}">Mapa de estudios</a>
-                </li>
+                
             </ul>
 
         </nav>
@@ -199,15 +192,15 @@
                         <ul class="nav navbar-nav ml-auto">
 
                             <li class="nav-item">
-                                <a class="nav-link"> {{ Auth::user()->name }} </a>
+                                <a class="nav-link"> <?php echo e(Auth::user()->name); ?> </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">{{ _('Cerrar Sesión') }}</a>
+                                <a class="nav-link" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                                   document.getElementById('logout-form').submit();"><?php echo e(_('Cerrar Sesión')); ?></a>
                             </li>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
+                            <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                                <?php echo csrf_field(); ?>
                             </form>
                         </ul>
                     </div>
@@ -217,7 +210,7 @@
             <!-- Main Content -->
 
             <main class="py-4">
-                @yield('content')
+                <?php echo $__env->yieldContent('content'); ?>
             </main>
 
             <!------------------>
