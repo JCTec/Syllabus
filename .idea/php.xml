@@ -76,11 +76,12 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/sven/artisan-view" />
+      <path value="$PROJECT_DIR$/vendor/danielstjules/stringy" />
       <path value="$PROJECT_DIR$/vendor/mongodb/mongodb" />
-      <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb-session" />
       <path value="$PROJECT_DIR$/vendor/cartalyst/sentry" />
-      <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb-session" />
       <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb-sentry" />
+      <path value="$PROJECT_DIR$/vendor/jenssegers/mongodb" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

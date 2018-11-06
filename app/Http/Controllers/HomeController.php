@@ -6,6 +6,7 @@ use App\competencias_materias;
 use App\Materia;
 use App\Plan_De_Estudio;
 use Illuminate\Http\Request;
+use Stringy\Stringy as S;
 
 class HomeController extends Controller
 {
@@ -23,9 +24,13 @@ class HomeController extends Controller
     {
         $plan = Plan_De_Estudio::where('_id','=',$id)->first();
 
+        if($plan == null){
+            return redirect()->back();
+        }
+
         $toSend = [];
 
-        $materias = Materia::select('*')->where(chr(239) . chr(187) . chr(191) .'CARRERA','=',$plan->codigo_plan)->get();
+        $materias = Materia::select('*')->where(chr(239) . chr(187) . chr(191) .'CARRERA','=',$plan->codigo_plan)->orderBy('SEMESTRE')->orderBy('ASIGNATURA')->get();
 
         foreach ($materias as $p){
 
@@ -38,13 +43,18 @@ class HomeController extends Controller
             array_push($toSend, json_encode($myPlan));
         }
 
-        return view('mapaDeEstudios')->with(['plan' => $plan, 'materias' => $toSend]);
+        $nameMapa = S::create((string)json_decode($plan, true)["carrera"])->toTitleCase();
+
+        return view('mapaDeEstudios')->with(['plan' => $plan, 'materias' => $toSend, 'nameMapa' => $nameMapa]);
     }
 
     public function dashboard()
     {
         $materias = Plan_De_Estudio::orderBy('division')->get();
 
+        foreach ($materias as $materia) {
+            $materia->carrera = ((string) S::create((string) $materia->carrera)->toTitleCase());
+        }
 
         $bloques = [];
 
@@ -53,6 +63,7 @@ class HomeController extends Controller
         $last = "$$";
 
         foreach ($materias as $materia){
+
             if($last != $materia->division){
 
                 if($last != "$$"){

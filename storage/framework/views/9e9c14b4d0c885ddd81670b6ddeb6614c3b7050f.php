@@ -14,12 +14,13 @@
                                     <hr color="#e58a00" width="100%" style="height:3px">
                                     <ul>
                                         <?php $__currentLoopData = (array) $bloque; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $materia): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <li>
                                             <?php
                                                 $mat = json_decode($materia, true);
-                                                echo $mat['carrera'];
                                             ?>
-                                            </li>
+                                            <li><a href="<?php echo e(route('mapaDeEstudios', ['id'=>$mat['_id']])); ?>">
+                                            <?php echo e($mat['carrera']); ?>
+
+                                            </a></li>
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </ul>

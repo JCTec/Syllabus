@@ -1,74 +1,91 @@
 <?php $__env->startSection('content'); ?>
     <div class="container">
+
+        <div class="float-right">
+            <img class="editB" src="<?php echo e(asset('img/pencil.png')); ?>" width="30px" height="30px">
+        </div>
+
         <div class="row justify-content-center">
-            <div class="col-md-12">
+
+            <div class="col-8">
                 <form>
 
                     <script>
+
+                        var editEnable = false;
 
                         $(document).ready(function () {
 
                             $('#sidebarCollapse').click();
 
-                            $('td').on('click', function () {
-                                var inp = $(this).find('input');
-                                var val = inp.val();
-
-                                if(val){
-                                    if(val == 0){
-                                        $(this).css('background-color', '#ffd99c');
-                                        inp.val(1);
-
-                                    }else if (val == 1){
-                                        $(this).css('background-color', '#ffb34c');
-                                        inp.val(2);
-
-                                    }else if(val == 2){
-                                        $(this).css('background-color', '#ff8300');
-                                        inp.val(3);
-
-                                    }else{
-                                        $(this).css('background-color', 'white');
-                                        inp.val(0);
-
-                                    }
+                            $('.editB').bind('click',function () {
+                                if(editEnable == true){
+                                    $(this).css('filter', 'contrast(100%)');
+                                    editEnable = false;
+                                }else{
+                                    $(this).css('filter', 'contrast(0%)');
+                                    editEnable = true;
                                 }
+                            });
 
-                                var route = "<?php echo e(route('setCState')); ?>?id="+ $(this).parent().attr('id') + "&competencia=" + inp.attr('id') + "&value=" + inp.val();
+                            $('td').on('click', function () {
 
-                                $.ajax({
-                                    type: "GET",
-                                    url: route,
-                                    data: null,
-                                    success: function (data) {
-                                        console.log(data);
+                                if(editEnable){
+                                    var inp = $(this).find('input');
+                                    var val = inp.val();
+
+                                    if(val){
+                                        if(val == 0){
+                                            $(this).css('background-color', '#ffd99c');
+                                            inp.val(1);
+
+                                        }else if (val == 1){
+                                            $(this).css('background-color', '#ffb34c');
+                                            inp.val(2);
+
+                                        }else if(val == 2){
+                                            $(this).css('background-color', '#ff8300');
+                                            inp.val(3);
+
+                                        }else{
+                                            $(this).css('background-color', 'white');
+                                            inp.val(0);
+
+                                        }
                                     }
-                                }).fail(function(resp){
-                                    console.log(resp);
-                                });
+
+                                    var route = "<?php echo e(route('setCState')); ?>?id="+ $(this).parent().attr('id') + "&competencia=" + inp.attr('id') + "&value=" + inp.val();
+
+                                    $.ajax({
+                                        type: "GET",
+                                        url: route,
+                                        data: null,
+                                        success: function (data) {
+                                            console.log(data);
+                                        }
+                                    }).fail(function(resp){
+                                        console.log(resp);
+                                    });
+                                }
 
                             });
                         });
                     </script>
 
-                    <div class="row" style="text-align: center">
-                        <h6 style="text-align: center"><?php echo e(json_decode($plan, true)["carrera"]); ?></h6>
-                    </div>
-
                     <table id="syllabusTable" cellspacing="0" cellpadding="0">
                         <tr class="mainRow">
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;width:7%;height:7%;">Código</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;width:15%;height:25%;">Matería</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C1</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C2</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C3</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C4</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C5</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C6</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C7</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C8</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C9</td>
-                            <td style="border-right:1px solid #757575;border-bottom:1px solid #757575;">C10</td>
+                            <td style="border-bottom:1px solid #757575;width:10%;height:7%;">Código</td>
+                            <td style="border-bottom:1px solid #757575;width:30%;height:25%;">Matería</td>
+                            <td style="border-bottom:1px solid #757575;">C1</td>
+                            <td style="border-bottom:1px solid #757575;">C2</td>
+                            <td style="border-bottom:1px solid #757575;">C3</td>
+                            <td style="border-bottom:1px solid #757575;">C4</td>
+                            <td style="border-bottom:1px solid #757575;">C5</td>
+                            <td style="border-bottom:1px solid #757575;">C6</td>
+                            <td style="border-bottom:1px solid #757575;">C7</td>
+                            <td style="border-bottom:1px solid #757575;">C8</td>
+                            <td style="border-bottom:1px solid #757575;">C9</td>
+                            <td style="border-bottom:1px solid #757575;">C10</td>
                         </tr>
 
                         <?php
@@ -122,7 +139,6 @@
                             $C8V = 0;
                             $C9V = 0;
                             $C10V = 0;
-
 
                             foreach ($com as $competencia){
 
@@ -190,6 +206,12 @@
 
                 </form>
             </div>
+
+            <div class="col-4">
+                <?php echo e(_('Aqui va el Chat')); ?>
+
+            </div>
+
         </div>
     </div>
 <?php $__env->stopSection(); ?>

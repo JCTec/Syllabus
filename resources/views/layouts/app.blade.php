@@ -19,7 +19,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
@@ -40,6 +39,10 @@
                 $('#sidebar, #content').toggleClass('active');
                 $('.collapse.in').toggleClass('in');
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
+            $('#logoutB').on('click', function () {
+                $('#logout-form').submit();
             });
 
             /*$("#sidebar").mCustomScrollbar({
@@ -111,7 +114,7 @@
 
 
         .competencia h6 {
-            color: black;
+            color: #ed7d31;
             padding-left: 10%;
             display: flex;
             width: 100%;
@@ -125,11 +128,11 @@
 
         .mainRow {
             margin-top: 20px;
-            background-color: #262626;
+            background-color: #ed7d31;
             height: 50px;
             color: white;
             text-align: center;
-            border-left: 1px solid #eeeeee;
+            border-left: none;
         }
 
         .subRow {
@@ -146,15 +149,18 @@
         #syllabusTable tr:first-child td {
             border-radius: 0;
             font-family: 'Roboto Condensed' SansSerif;
+            border: none;
         }
 
+
         #syllabusTable tr td{
-            border: none;
-            height: 15px;
+            height: 20px;
             border-radius: 10%;
             overflow: hidden;
             white-space: nowrap;
             font-family: 'Roboto' SansSerif;
+            border: 1px #e3e3e3 solid;
+
         }
 
 
@@ -164,20 +170,29 @@
             height: 100%;
             width: 100%;
             table-layout: fixed;
-            border: none;
+            border: 1px #c1c1c1 solid;
         }
 
 
         .SyllabusNav {
-            width: 110%;
+            width: 102%;
             height: 30px;
-            background-color: black;
+            background-color: #ed7d31;
         }
 
         .SyllabusNav .col {
             color: white;
             border-right: 1px solid white;
             text-align: center;
+        }
+
+        .SyllabusNav .col-8 {
+            color: white;
+            text-align: right;
+        }
+
+        .SyllabusNav .col-8 a {
+            color: white;
         }
 
         .SyllabusNav .col h4{
@@ -190,12 +205,40 @@
             margin-top: 20px;
             width: 100%;
             height: 30px;
-            background-color: black;
+            background-color: #ed7d31;
             border-radius: 20px;
         }
 
         .table .row .col {
             text-align: center;
+        }
+
+        .logoutButton {
+            filter: brightness(1);
+            cursor: pointer;
+        }
+
+        .logoutButton:hover {
+            filter: brightness(0.8);
+        }
+
+        .editB {
+            cursor: pointer;
+        }
+
+        .chat {
+            height: 100%;
+            width: 100%;
+            background-color: #1b1e21;
+        }
+
+        .chatBubble {
+            z-index: 10;
+            bottom: 30px;
+            float: right;
+            position: relative;
+            left: -42%; /* or right 50% */
+            text-align: left;
         }
 
     </style>
@@ -232,22 +275,14 @@
                                 @endif
                             </li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                            <li class="nav-item">
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                @if(isset($nameMapa))
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                    {{$nameMapa}}
+
+                                @endif
+
                             </li>
                         @endguest
                     </ul>
@@ -271,8 +306,15 @@
                 </div>
 
                 <div class="col-8">
-                    <h4></h4>
+                    {{Auth::user()->name}}
+
+                    <img id="logoutB" class="logoutButton" src="{{asset('img/logout.png')}}" width="20px" height="20px">
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </div>
+
             </div>
 
         @endif

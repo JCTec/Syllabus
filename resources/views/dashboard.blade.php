@@ -16,12 +16,12 @@
                                     <hr color="#e58a00" width="100%" style="height:3px">
                                     <ul>
                                         @foreach((array) $bloque as $materia)
-                                            <li>
                                             @php
                                                 $mat = json_decode($materia, true);
-                                                echo $mat['carrera'];
                                             @endphp
-                                            </li>
+                                            <li><a href="{{route('mapaDeEstudios', ['id'=>$mat['_id']])}}">
+                                            {{$mat['carrera']}}
+                                            </a></li>
                                         @endforeach
 
                                     </ul>
