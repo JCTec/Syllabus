@@ -20,7 +20,7 @@
                                                 $mat = json_decode($materia, true);
                                             @endphp
                                             <li><a href="{{route('mapaDeEstudios', ['id'=>$mat['_id']])}}">
-                                            {{$mat['carrera']}}
+                                            {{$mat['CARRERA']}}
                                             </a></li>
                                         @endforeach
 

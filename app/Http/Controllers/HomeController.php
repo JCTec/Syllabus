@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         $toSend = [];
 
-        $materias = Materia::select('*')->where(chr(239) . chr(187) . chr(191) .'CARRERA','=',$plan->codigo_plan)->orderBy('SEMESTRE')->orderBy('ASIGNATURA')->get();
+        $materias = Materia::select('*')->where('CARRERA','=',$plan->codigo_plan)->orderBy('SEMESTRE')->orderBy('ASIGNATURA')->get();
 
         foreach ($materias as $p){
 
@@ -43,14 +43,15 @@ class HomeController extends Controller
             array_push($toSend, json_encode($myPlan));
         }
 
-        $nameMapa = S::create((string)json_decode($plan, true)["carrera"])->toTitleCase();
+        $nameMapa = S::create((string)json_decode($plan, true)["CARRERA"])->toTitleCase();
 
         return view('mapaDeEstudios')->with(['plan' => $plan, 'materias' => $toSend, 'nameMapa' => $nameMapa]);
     }
 
     public function dashboard()
     {
-        $materias = Plan_De_Estudio::orderBy('division')->get();
+        $materias = Plan_De_Estudio::orderBy('DIVISION')->get();
+
 
         foreach ($materias as $materia) {
             $materia->carrera = ((string) S::create((string) $materia->carrera)->toTitleCase());
