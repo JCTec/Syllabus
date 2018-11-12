@@ -9,7 +9,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-8">
+            <div class="col-10">
                 <form>
 
                     <script>
@@ -209,7 +209,7 @@
                 </form>
             </div>
 
-            <div class="col-4">
+            <div class="col-2" style="margin-top: 50px">
                 {{ _('Aqui va el Chat')  }}
             </div>
 

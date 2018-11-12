@@ -241,6 +241,22 @@
             text-align: left;
         }
 
+        .SyllabusLink {
+            color: black;
+        }
+
+        .DRow .col-3 {
+            margin-left: 0px;
+        }
+
+        .myPlan {
+            border-radius: 25px;
+            border: #E5E5E5 1px solid;
+            padding: 10px;
+            height: 100%;
+            box-shadow: -2px 2px #c6c6c6;
+        }
+
     </style>
 </head>
 <body>
@@ -293,17 +309,28 @@
         @if(Request::url() != route('login') && Request::url() != route('logout') && Request::url() != route('register'))
 
             <div class="SyllabusNav row">
-                <div class="col">
-                    <h4><a>2010</a></h4>
-                </div>
+                @if(Request::url() != route('dashboard'))
+                    <div class="col">
+                        <h4><a>2010</a></h4>
+                    </div>
 
-                <div class="col">
-                    <h4><a>2011</a></h4>
-                </div>
+                    <div class="col">
+                        <h4><a>2011</a></h4>
+                    </div>
 
-                <div class="col">
-                    <h4><a>2012</a></h4>
-                </div>
+                    <div class="col">
+                        <h4><a>2012</a></h4>
+                    </div>
+                @else
+                    <div class="col" style="border: none;">
+                    </div>
+
+                    <div class="col" style="border: none;">
+                    </div>
+
+                    <div class="col" style="border: none;">
+                    </div>
+                @endif
 
                 <div class="col-8">
                     {{Auth::user()->name}}
