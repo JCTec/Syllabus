@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="<?php echo e(str_replace('_', '-', app()->getLocale())); ?>">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
-    <title>{{ config('app.name', 'Syllabus') }}</title>
+    <title><?php echo e(config('app.name', 'Syllabus')); ?></title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="<?php echo e(asset('js/app.js')); ?>" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -53,7 +53,7 @@
     </script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Roboto');
+        @import  url('https://fonts.googleapis.com/css?family=Roboto');
 
         .buttonIC {
             border-radius: 15px;
@@ -265,12 +265,13 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{asset('img/anahuac.png')}}" width="30px" height="30px">
-                    {{ config('app.name', 'Syllabus') }}
+                <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
+                    <img src="<?php echo e(asset('img/anahuac.png')); ?>" width="30px" height="30px">
+                    <?php echo e(config('app.name', 'Syllabus')); ?>
+
                 </a>
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -283,35 +284,36 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        <?php if(auth()->guard()->guest()): ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
                             </li>
                             <li class="nav-item">
-                                @if (Route::has('register'))
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                @endif
+                                <?php if(Route::has('register')): ?>
+                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
+                                <?php endif; ?>
                             </li>
-                        @else
+                        <?php else: ?>
                             <li class="nav-item">
 
-                                @if(isset($nameMapa))
+                                <?php if(isset($nameMapa)): ?>
 
-                                    {{$nameMapa}}
+                                    <?php echo e($nameMapa); ?>
 
-                                @endif
+
+                                <?php endif; ?>
 
                             </li>
-                        @endguest
+                        <?php endif; ?>
                     </ul>
                 </div>
             </div>
         </nav>
 
-        @if(Request::url() != route('login') && Request::url() != route('logout') && Request::url() != route('register'))
+        <?php if(Request::url() != route('login') && Request::url() != route('logout') && Request::url() != route('register')): ?>
 
             <div class="SyllabusNav row">
-                @if(Request::url() != route('dashboard'))
+                <?php if(Request::url() != route('dashboard')): ?>
                     <div class="col">
                         <h4><a>2010</a></h4>
                     </div>
@@ -323,7 +325,7 @@
                     <div class="col">
                         <h4><a>2012</a></h4>
                     </div>
-                @else
+                <?php else: ?>
                     <div class="col" style="border: none;">
                     </div>
 
@@ -332,24 +334,25 @@
 
                     <div class="col" style="border: none;">
                     </div>
-                @endif
+                <?php endif; ?>
 
                 <div class="col-8">
-                    {{Auth::user()->name}}
+                    <?php echo e(Auth::user()->name); ?>
 
-                    <img id="logoutB" class="logoutButton" src="{{asset('img/logout.png')}}" width="20px" height="20px">
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
+                    <img id="logoutB" class="logoutButton" src="<?php echo e(asset('img/logout.png')); ?>" width="20px" height="20px">
+
+                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                        <?php echo csrf_field(); ?>
                     </form>
                 </div>
 
             </div>
 
-        @endif
+        <?php endif; ?>
 
         <main class="py-4">
-            @yield('content')
+            <?php echo $__env->yieldContent('content'); ?>
         </main>
     </div>
 </body>
