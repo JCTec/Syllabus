@@ -20,6 +20,8 @@ Route::get('/mapaDeEstudios/{id}', 'HomeController@mapaDeEstudios')->name('mapaD
 
 Route::get('/', 'HomeController@dashboard')->name('dashboard');
 
+Route::post('/chat/addMessage', 'ChatController@addMessage')->name('chatMessage');
+
 
 
 

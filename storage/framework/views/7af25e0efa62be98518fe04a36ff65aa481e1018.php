@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="<?php echo e(asset('css/app.css')); ?>" rel="stylesheet">
+    <link href="<?php echo e(asset('css/Bubble.css')); ?>" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
@@ -54,6 +55,14 @@
 
     <style>
         @import  url('https://fonts.googleapis.com/css?family=Roboto');
+
+        body{
+            font-family: 'Roboto', sans-serif;
+        }
+
+        * {
+            font-family: 'Roboto', sans-serif;
+        }
 
         .buttonIC {
             border-radius: 15px;
@@ -259,16 +268,98 @@
             box-shadow: -2px 2px #AFAFAF;
         }
 
+        .exit {
+            position: fixed;
+            margin: -20px;
+            background-color: #e7dad9;
+            padding: 10px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+        }
+
+        .chat {
+            position: fixed;
+            bottom: 10px;
+            right: 40px;
+            height: 500px;
+            width: 300px;
+            overflow: hidden;
+            border-radius: 2%;
+            border: #e7dad9 1px solid;
+            background-color: transparent;
+        }
+
+        .chat-header {
+            background-color: #ed7d31;
+            text-align: center;
+            height: 10%;
+            width: available;
+            align-content: center;
+            color: white;
+        }
+
+        .chat-message  {
+            background-color: white;
+            align-content: left;
+            position: relative;
+            width: 60%;
+            height: 40px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            margin-left: 30px;
+            border-radius: 25px;
+            padding-left: 20px;
+        }
+
+        .chat-content {
+            background-color: #ffffff;
+            width: available;
+            height: 80%;
+            overflow: scroll;
+            padding-top: 10px;
+        }
+
+        .chat-toolbar {
+            background-color: #e7dad9;
+            height: 10%;
+            align-content: center;
+            text-align: center;
+        }
+
+        .toolbar{
+            align-content: center;
+            text-align: center;
+            width: 80%;
+        }
+
+        #textSend{
+            width: 100%;
+            margin-left: 20px;
+        }
+
+        #chat-show {
+            position: fixed;
+            bottom: 10px;
+            right: 40px;
+            height: 80px;
+            width: 80px;
+            overflow: hidden;
+            border-radius: 50%;
+            background-color: #e7dad9;
+            padding: 10px;
+        }
+
+
     </style>
+
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
-                    <img src="<?php echo e(asset('img/anahuac.png')); ?>" width="30px" height="30px">
-                    <?php echo e(config('app.name', 'Syllabus')); ?>
-
+                    <img src="<?php echo e(asset('img/anahuac.png')); ?>" width="180px" height="40px">
                 </a>
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="<?php echo e(__('Toggle navigation')); ?>">

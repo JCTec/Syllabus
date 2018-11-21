@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+    <div style="padding-right: 20px;padding-left: 20px">
 
         <div class="float-right">
             <img class="editB" src="{{asset('img/pencil.png')}}" width="30px" height="30px">
@@ -9,14 +9,146 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-10">
+            <div id="mainCol" class="col">
                 <form>
 
                     <script>
+                        function toBottom(){
+                            var objDiv = document.getElementById("chatContent");
+                            objDiv.scrollTop = objDiv.scrollHeight;
+                        }
+
+                        function sortTable(n) {
+                            if(n < 2){
+                                var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                                table = document.getElementById("syllabusTable");
+                                switching = true;
+                                // Set the sorting direction to ascending:
+                                dir = "asc";
+                                /* Make a loop that will continue until
+                                no switching has been done: */
+                                while (switching) {
+                                    // Start by saying: no switching is done:
+                                    switching = false;
+                                    rows = table.rows;
+                                    /* Loop through all table rows (except the
+                                    first, which contains table headers): */
+                                    for (i = 1; i < (rows.length - 1); i++) {
+                                        // Start by saying there should be no switching:
+                                        shouldSwitch = false;
+                                        /* Get the two elements you want to compare,
+                                        one from current row and one from the next: */
+                                        x = rows[i].getElementsByTagName("TD")[n];
+                                        y = rows[i + 1].getElementsByTagName("TD")[n];
+                                        /* Check if the two rows should switch place,
+                                        based on the direction, asc or desc: */
+                                        if (dir == "asc") {
+                                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                                // If so, mark as a switch and break the loop:
+                                                shouldSwitch = true;
+                                                break;
+                                            }
+                                        } else if (dir == "desc") {
+                                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                                // If so, mark as a switch and break the loop:
+                                                shouldSwitch = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    if (shouldSwitch) {
+                                        /* If a switch has been marked, make the switch
+                                        and mark that a switch has been done: */
+                                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                                        switching = true;
+                                        // Each time a switch is done, increase this count by 1:
+                                        switchcount ++;
+                                    } else {
+                                        /* If no switching has been done AND the direction is "asc",
+                                        set the direction to "desc" and run the while loop again. */
+                                        if (switchcount == 0 && dir == "asc") {
+                                            dir = "desc";
+                                            switching = true;
+                                        }
+                                    }
+                                }
+                            }else {
+                                hideC(n);
+                            }
+                        }
+
+                        function showAll() {
+                            $('#syllabusTable').find('tr').each(function (index) {
+                                $(this).show();
+                            });
+                        }
+
+                        var hidden = false;
+                        var lastN = -1;
+
+                        function hideC(n){
+                            if(hidden && lastN == n){
+                                showAll();
+                                hidden = false;
+                            }else{
+                                showAll();
+                                lastN = n;
+                                $('#syllabusTable').find('tr').each(function (index) {
+                                    if(index != 0){
+                                        if($(this).find("td:eq("+n+")").find("input:first").val() == 0){
+                                            $(this).hide();
+                                            hidden=true;
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    </script>
+
+                    <script>
+
+                        function sendMessage(text) {
+                            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+                            var plan = '{{ $plan["_id"] }}';
+                            var url = '{{route('chatMessage')}}';
+
+                            $.ajax({
+                                /* the route pointing to the post function */
+                                url: url,
+                                type: 'POST',
+                                /* send the csrf-token and the input to the controller */
+                                data: {_token: CSRF_TOKEN, text: text, planDeEstudio: plan},
+                                dataType: 'JSON',
+                                /* remind that 'data' is the response of the AjaxController */
+                                success: function (data) {
+                                    console.log(data);
+                                    window.location.reload(false);
+                                },
+                                error: function (data) {
+                                    console.log(data);
+                                }
+                            });
+                        }
 
                         var editEnable = false;
 
                         $(document).ready(function () {
+
+                            $('#sendAction').on('click', function () {
+                                if($('#messageToSend').val().trim() != ""){
+                                    sendMessage($('#messageToSend').val());
+                                }
+                            });
+
+                            $('.exit').on('click', function () {
+                                $(this).parent().hide(300);
+                                $('#space').hide();
+                            });
+
+                            $('#chat-show').on('click', function () {
+                                $('.chat').show(300);
+                                $('#space').show();
+                            });
 
                             $('#sidebarCollapse').click();
 
@@ -71,23 +203,26 @@
                                 }
 
                             });
+
+
+                            toBottom();
                         });
                     </script>
 
                     <table id="syllabusTable" cellspacing="0" cellpadding="0">
                         <tr class="mainRow">
-                            <td style="border-bottom:1px solid #757575;width:10%;height:7%;">Código</td>
-                            <td style="border-bottom:1px solid #757575;width:30%;height:25%;">Matería</td>
-                            <td style="border-bottom:1px solid #757575;">C1</td>
-                            <td style="border-bottom:1px solid #757575;">C2</td>
-                            <td style="border-bottom:1px solid #757575;">C3</td>
-                            <td style="border-bottom:1px solid #757575;">C4</td>
-                            <td style="border-bottom:1px solid #757575;">C5</td>
-                            <td style="border-bottom:1px solid #757575;">C6</td>
-                            <td style="border-bottom:1px solid #757575;">C7</td>
-                            <td style="border-bottom:1px solid #757575;">C8</td>
-                            <td style="border-bottom:1px solid #757575;">C9</td>
-                            <td style="border-bottom:1px solid #757575;">C10</td>
+                            <th style="border-bottom:1px solid #757575;width:10%;height:7%;" onclick="sortTable(0)">Código</th>
+                            <th style="border-bottom:1px solid #757575;width:30%;height:25%;" onclick="sortTable(1)">Matería</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(2)">C1</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(3)">C2</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(4)">C3</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(5)">C4</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(6)">C5</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(7)">C6</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(8)">C7</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(9)">C8</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(10)">C9</th>
+                            <th style="border-bottom:1px solid #757575;" onclick="sortTable(11)">C10</th>
                         </tr>
 
                         <?php
@@ -209,8 +344,48 @@
                 </form>
             </div>
 
-            <div class="col-2" style="margin-top: 50px">
-                {{ _('Aqui va el Chat')  }}
+            <div id="space" class="col-4"></div>
+
+            <div id="chat-show">
+                <img src="{{asset('img/cha.png')}}" width="100%" height="100%">
+            </div>
+
+            <div class="chat" style="margin-top: 50px">
+                <img class="exit" src="{{asset('img/clear-button.png')}}" width="100%" height="100%">
+                <div class="row chat-header justify-content-center">
+                    {{$plan["CODIGO_PLAN"]}}
+                </div>
+
+                <div id="chatContent" class="row chat-content">
+
+                    @foreach($messages as $message)
+
+                        <div class="talk-bubble btm-left noMargin">
+                            <h6>{{$message["USER"]}}</h6>
+                            <div class="talktext">
+                                <p>{{$message["text"]}}</p>
+                            </div>
+                        </div>
+
+                        @foreach($message["SUB"] as $item)
+                            <div class="talk-bubbleSubMessage noMargin btm-left">
+                                <h6>{{$message["USER"]}}</h6>
+                                <div class="talktext">
+                                    <p>{{json_decode($item, true)["text"]}}</p>
+                                </div>
+                            </div>
+                        @endforeach
+
+                    @endforeach
+
+                </div>
+
+                <div class="row chat-toolbar">
+                    <form id="textSend" class="form-inline">
+                        <input id="messageToSend" class="toolbar" type="text" name="message">
+                        <img id="sendAction" class="form-inline" src="{{asset('img/send.png')}}" width="30px" height="30px" style="margin-left: 5px">
+                    </form>
+                </div>
             </div>
 
         </div>

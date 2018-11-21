@@ -376,6 +376,7 @@ class ComposerStaticInitac08ab93f6f0cebf9f8c406b134a9ae9
     );
 
     public static $classMap = array (
+        'App\\Chat' => __DIR__ . '/../..' . '/app/Chat.php',
         'App\\Competencia' => __DIR__ . '/../..' . '/app/Competencia.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -384,6 +385,7 @@ class ComposerStaticInitac08ab93f6f0cebf9f8c406b134a9ae9
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
+        'App\\Http\\Controllers\\ChatController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatController.php',
         'App\\Http\\Controllers\\CompetenciasController' => __DIR__ . '/../..' . '/app/Http/Controllers/CompetenciasController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
@@ -396,6 +398,7 @@ class ComposerStaticInitac08ab93f6f0cebf9f8c406b134a9ae9
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Materia' => __DIR__ . '/../..' . '/app/Materia.php',
+        'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
         'App\\Plan_De_Estudio' => __DIR__ . '/../..' . '/app/Plan_De_Estudio.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -403,6 +406,7 @@ class ComposerStaticInitac08ab93f6f0cebf9f8c406b134a9ae9
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\UserLogs' => __DIR__ . '/../..' . '/app/UserLogs.php',
         'App\\competencias_materias' => __DIR__ . '/../..' . '/app/competencias_materias.php',
         'BeyondCode\\DumpServer\\DumpServerCommand' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
         'BeyondCode\\DumpServer\\DumpServerServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',

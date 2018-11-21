@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\competencias_materias;
 use App\Materia;
 use App\Plan_De_Estudio;
+use App\User;
 use Illuminate\Http\Request;
 use Stringy\Stringy as S;
+use App\Chat;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -43,9 +46,40 @@ class HomeController extends Controller
             array_push($toSend, json_encode($myPlan));
         }
 
-        $nameMapa = (string)json_decode($plan, true)["CARRERA"];
+        $planDecoded = json_decode($plan, true);
 
-        return view('mapaDeEstudios')->with(['plan' => $plan, 'materias' => $toSend, 'nameMapa' => $nameMapa]);
+        $nameMapa = (string) $planDecoded["CARRERA"];
+
+        $chat = Chat::where('planDeEstudio', '=', $id)->first();
+
+        if(!$chat){
+            $chat = new Chat();
+            $chat->planDeEstudio = $id;
+            $chat->save();
+
+            if(!$chat) {
+                return response()->json(['error' => 'An error ocurred'], 500);
+            }
+        }
+
+        $messages = Message::where('origin', '=',  null)->where('chatID', '=', $chat->_id)->get();
+
+        $toSendC = [];
+
+        foreach ($messages as $message){
+            $x = json_decode($message, true);
+
+            $userToFind = User::select('name')->where('id', '=', $x['userID'])->first();
+
+            $subMessages = Message::where('origin', '=', $x["_id"])->get();
+
+            $x["SUB"] = $subMessages;
+            $x["USER"] = $userToFind->name;
+
+            array_push($toSendC, $x);
+        }
+
+        return view('mapaDeEstudios')->with(['plan' => $planDecoded, 'materias' => $toSend, 'nameMapa' => $nameMapa, 'messages' => $toSendC, 'chat' => $chat]);
     }
 
     public function dashboard()
