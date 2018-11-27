@@ -472,7 +472,7 @@
                                         <span onclick="window.location.href = '{{route('remove', ['id' => $message["_id"]])}}'" class="close" title="Close PopUp">&times;</span>
                                     </div>
                                 @endif
-                                
+
                                 <h6>{{$message["USER"]}}</h6>
                                 <div class="talktext">
                                     <p>{{json_decode($item, true)["text"]}}</p>

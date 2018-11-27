@@ -436,7 +436,7 @@
             color: white;
         }
 
-        #name {
+        #nameLogo {
             position: absolute;
             right: 10px;
             top: 20px;
@@ -473,7 +473,7 @@
 
             </div>
             @if(isset($nameMapa))
-                <div id="name" class="row" style="text-align: right; align-content: right">
+                <div id="nameLogo" class="row" style="text-align: right; align-content: right">
                     <div class="col"></div>
                     <div class="col">
                         <h4 style="color: #626262">{{$nameMapa}}</h4>
@@ -511,7 +511,10 @@
 
                 <div class="col-8">
                     <div style="padding-right: 30px">
-                        {{Auth::user()->name}}
+                        @guest()
+                        @else
+                            {{Auth::user()->name}}
+                        @endguest
 
                         <img id="logoutB" class="logoutButton" src="{{asset('img/logout.png')}}" width="20px" height="20px">
 
