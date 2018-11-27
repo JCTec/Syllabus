@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-    <div class="row DRow">
+    <div class="row DRow" style="margin-left: 20px; margin-right: 20px;">
         <?php $__currentLoopData = $bloques; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $bloque): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col my-2 py-3">
                 <div class="myPlan">

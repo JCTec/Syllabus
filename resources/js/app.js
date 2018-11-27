@@ -6,6 +6,7 @@
  */
 
 import 'jquery-ui/ui/widgets/draggable.js';
+import 'html2canvas';
 
 require('./bootstrap');
 
@@ -25,3 +26,4 @@ const app = new Vue({
 
 
 window.$ = window.jQuery = require('jquery');
+window.html2canvas = require('html2canvas');

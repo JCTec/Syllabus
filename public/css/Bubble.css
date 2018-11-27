@@ -3,14 +3,15 @@
 .talk-bubble {
     display: inline-block;
     position: relative;
-    width: 200px;
+    width: 400px;
+    font-size: 20px;
     height: -moz-fit-content;
     background-color: transparent;
     margin-left: 10px;
     margin-right: 40px;
     margin-top: 10px;
     margin-bottom: 10px;
-
+    color: #1d68a7;
 }
 
 .noMargin {
@@ -28,8 +29,9 @@
 
 .talk-bubble h6{
     margin-left: 10px;
-    text-decoration: underline;
     margin-bottom: 0px;
+    font-size: 20px;
+    color: black;
 }
 
 /* CSS talk bubble */
@@ -43,12 +45,14 @@
     margin-right: 40px;
     margin-top: 0px;
     margin-bottom: 0px;
+    color: #1d68a7;
+
 }
 
 .talk-bubbleSubMessage h6 {
     margin-left: 15px;
-    text-decoration: underline;
     margin-bottom: 0px;
+    color: black;
 
 }
 

@@ -235,6 +235,10 @@
             cursor: pointer;
         }
 
+        .exportB{
+            cursor: pointer;
+        }
+
         .chat {
             height: 100%;
             width: 100%;
@@ -315,8 +319,10 @@
         .chat-content {
             background-color: #ffffff;
             width: available;
+            max-width: 315px;
             height: 80%;
-            overflow: scroll;
+            overflow-x: hidden;
+            overflow-y: scroll;
             padding-top: 10px;
         }
 
@@ -350,6 +356,93 @@
             padding: 10px;
         }
 
+        .clickable {
+            cursor: pointer;
+        }
+
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+        .avatar {
+            width: 200px;
+            height:200px;
+            border-radius: 50%;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display:none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        #info {
+            overflow-y: scroll;
+            overflow-x: scroll;
+            position: relative;
+            height: 400px;
+
+        }
+
+        /* Modal Content Box */
+        .modal-content {
+            background-color: #ed7d31;
+            margin: 4% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+            height: 80%;
+            padding-bottom: 30px;
+            color: white;
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        .close:hover,.close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            animation: zoom 0.6s
+        }
+        @keyframes  zoom {
+            from {transform: scale(0)}
+            to {transform: scale(1)}
+        }
+
+        .noA{
+            color: black;
+        }
+
+        .noA-white{
+            color: white;
+        }
+
+        #name {
+            position: absolute;
+            right: 10px;
+            top: 20px;
+            width: 900px;
+        }
+
 
     </style>
 
@@ -357,7 +450,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+            <div style="margin-left: 20px; margin-right: 20px">
                 <a class="navbar-brand" href="<?php echo e(url('/')); ?>">
                     <img src="<?php echo e(asset('img/anahuac.png')); ?>" width="180px" height="40px">
                 </a>
@@ -374,34 +467,23 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        <?php if(auth()->guard()->guest()): ?>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo e(route('login')); ?>"><?php echo e(__('Login')); ?></a>
-                            </li>
-                            <li class="nav-item">
-                                <?php if(Route::has('register')): ?>
-                                    <a class="nav-link" href="<?php echo e(route('register')); ?>"><?php echo e(__('Register')); ?></a>
-                                <?php endif; ?>
-                            </li>
-                        <?php else: ?>
-                            <li class="nav-item">
 
-                                <?php if(isset($nameMapa)): ?>
-
-                                    <?php echo e($nameMapa); ?>
-
-
-                                <?php endif; ?>
-
-                            </li>
-                        <?php endif; ?>
                     </ul>
                 </div>
+
             </div>
+            <?php if(isset($nameMapa)): ?>
+                <div id="name" class="row" style="text-align: right; align-content: right">
+                    <div class="col"></div>
+                    <div class="col">
+                        <h4 style="color: #626262"><?php echo e($nameMapa); ?></h4>
+                    </div>
+                </div>
+            <?php endif; ?>
         </nav>
 
-        <?php if(Request::url() != route('login') && Request::url() != route('logout') && Request::url() != route('register')): ?>
+
+        <?php if(Request::url() != route('login') && Request::url() != route('logout')): ?>
 
             <div class="SyllabusNav row">
                 <?php if(Request::url() != route('dashboard')): ?>
@@ -428,14 +510,16 @@
                 <?php endif; ?>
 
                 <div class="col-8">
-                    <?php echo e(Auth::user()->name); ?>
+                    <div style="padding-right: 30px">
+                        <?php echo e(Auth::user()->name); ?>
 
 
-                    <img id="logoutB" class="logoutButton" src="<?php echo e(asset('img/logout.png')); ?>" width="20px" height="20px">
+                        <img id="logoutB" class="logoutButton" src="<?php echo e(asset('img/logout.png')); ?>" width="20px" height="20px">
 
-                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
-                        <?php echo csrf_field(); ?>
-                    </form>
+                        <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" style="display: none;">
+                            <?php echo csrf_field(); ?>
+                        </form>
+                    </div>
                 </div>
 
             </div>

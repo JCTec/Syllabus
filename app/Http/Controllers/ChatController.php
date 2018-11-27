@@ -62,7 +62,7 @@ class ChatController extends Controller
     }
 
 
-    public function removeMessage($id){
+    public function remove($id){
         $user = Auth::user();
 
         if($user){
@@ -72,8 +72,12 @@ class ChatController extends Controller
             if(!$message){
                 return response()->json(['error' => 'An error ocurred'], 500);
             }else{
-                $message->forceDelete();
-                return response()->json(['Status' => 'Success'], 500);
+                if($message->userID == $user->id){
+                    $message->forceDelete();
+                    return redirect()->back();
+                }else{
+                    return response()->json(['error' => 'An error ocurred'], 500);
+                }
             }
         }else{
             return response()->json(['error' => 'An error ocurred'], 500);
