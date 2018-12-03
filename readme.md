@@ -1,6 +1,6 @@
-## Syllabus
-# Guía de instalación y configuración
-# Requerimientos: 
+# Syllabus
+## Guía de instalación y configuración
+## Requerimientos: 
 
     Arquitectura x86_64 (i386 i686 no soportado)
     Apache o nginx
@@ -9,7 +9,7 @@
     mysql
     org
 
-# Instalación: 
+## Instalación: 
 
 <p>Configurar la base de datos mysql corriendo el script syllabus.sql.</p>
 
