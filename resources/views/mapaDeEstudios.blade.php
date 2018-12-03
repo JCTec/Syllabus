@@ -466,16 +466,20 @@
                         </div>
 
                         @foreach($message["SUB"] as $item)
+                            <?php
+                                $subMessage = json_decode($item, true);
+                            ?>
+
                             <div class="talk-bubbleSubMessage noMargin btm-left">
-                                @if($message["userID"] == Auth::user()->id)
+                                @if($subMessage["userID"] == Auth::user()->id)
                                     <div class="imgcontainer">
-                                        <span onclick="window.location.href = '{{route('remove', ['id' => $message["_id"]])}}'" class="close" title="Close PopUp">&times;</span>
+                                        <span onclick="window.location.href = '{{route('remove', ['id' => $subMessage["_id"]])}}'" class="close" title="Close PopUp">&times;</span>
                                     </div>
                                 @endif
 
-                                <h6>{{$message["USER"]}}</h6>
+                                <h6>{{$subMessage["USER"]}}</h6>
                                 <div class="talktext">
-                                    <p>{{json_decode($item, true)["text"]}}</p>
+                                    <p>{{ $subMessage["text"] }}</p>
                                 </div>
                             </div>
                         @endforeach

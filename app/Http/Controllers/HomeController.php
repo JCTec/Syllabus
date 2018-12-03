@@ -78,9 +78,9 @@ class HomeController extends Controller
             foreach ($subMessagesX as $subMessage){
                 $xS = json_decode($subMessage, true);
 
-                $userToFind = User::select('name')->where('id', '=', $xS['userID'])->first();
+                $userToFind2 = User::select('name')->where('id', '=', $xS['userID'])->first();
 
-                $xS["USER"] = $userToFind->name;
+                $xS["USER"] = $userToFind2->name;
 
                 array_push($subMessages, json_encode($xS));
 
