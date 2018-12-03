@@ -82,7 +82,7 @@ class HomeController extends Controller
 
                 $xS["USER"] = $userToFind->name;
 
-                array_push($subMessages, $xS);
+                array_push($subMessages, json_encode($xS));
 
             }
 
