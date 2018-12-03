@@ -441,6 +441,7 @@
             right: 10px;
             top: 20px;
             width: 900px;
+            font-size: 16px;
         }
 
         .message {
