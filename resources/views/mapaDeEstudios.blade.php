@@ -445,24 +445,25 @@
             <div class="chat" style="margin-top: 50px">
                 <img class="exit" src="{{asset('img/clear-button.png')}}" width="100%" height="100%">
                 <div class="row chat-header justify-content-center">
-                    {{$plan["CODIGO_PLAN"]}}
                 </div>
 
                 <div id="chatContent" class="row chat-content">
 
                     @foreach($messages as $message)
 
-                        <div class="talk-bubble btm-left noMargin mainResponser">
+                        <div class="message row btm-left mainResponser">
+                            <div class="col">
+                                <h6 class="head-chat">{{$message["USER"]}}</h6>
+                                <div id="{{$message["_id"]}}" class="talktext">
+                                    <p>{{$message["text"]}}</p>
+                                </div>
+                            </div>
+
                             @if($message["userID"] == Auth::user()->id)
-                                <div class="imgcontainer">
+                                <div class="remove col-2">
                                     <span onclick="window.location.href = '{{route('remove', ['id' => $message["_id"]])}}'" class="close" title="Close PopUp">&times;</span>
                                 </div>
                             @endif
-
-                            <h6>{{$message["USER"]}}</h6>
-                            <div id="{{$message["_id"]}}" class="talktext">
-                                <p>{{$message["text"]}}</p>
-                            </div>
                         </div>
 
                         @foreach($message["SUB"] as $item)
@@ -470,19 +471,23 @@
                                 $subMessage = json_decode($item, true);
                             ?>
 
-                            <div class="talk-bubbleSubMessage noMargin btm-left">
+                            <div class="row btm-left subMessage">
+                                <div class="col">
+                                    <h6 class="head-chatS">{{$subMessage["USER"]}}</h6>
+                                    <div class="SubText">
+                                        <p>{{ $subMessage["text"] }}</p>
+                                    </div>
+                                </div>
+
                                 @if($subMessage["userID"] == Auth::user()->id)
-                                    <div class="imgcontainer">
+                                    <div class="remove">
                                         <span onclick="window.location.href = '{{route('remove', ['id' => $subMessage["_id"]])}}'" class="close" title="Close PopUp">&times;</span>
                                     </div>
                                 @endif
-
-                                <h6>{{$subMessage["USER"]}}</h6>
-                                <div class="talktext">
-                                    <p>{{ $subMessage["text"] }}</p>
-                                </div>
                             </div>
                         @endforeach
+
+                        <div class="line"></div>
 
                     @endforeach
 

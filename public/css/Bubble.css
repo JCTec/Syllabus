@@ -283,14 +283,52 @@
     border-color: lightyellow transparent transparent transparent;
 }
 
-/* talk bubble contents */
-.talktext{
-    padding: 1em;
+.head-chat {
+    margin-left: 30px;
+    padding-top: 5px;
+    font-size: 17px;
+}
+
+.head-chatS {
+    margin-left: 50px;
+    font-size: 13px;
+
+}
+
+.SubText{
+    margin-top: 10px;
+    margin-left: 60px;
     text-align: left;
     line-height: 1.5em;
 }
+
+.SubText p {
+    color: #1d68a7;
+    font-size: 12px;
+}
+
+.line {
+    width: 600px;
+    height: 1px;
+    background-color: #E0E0E0;
+}
+
+/* talk bubble contents */
+.talktext{
+    margin-top: 10px;
+    margin-left: 40px;
+    text-align: left;
+    line-height: 1.5em;
+}
+
 .talktext p{
     /* remove webkit p margins */
-    -webkit-margin-before: 0em;
-    -webkit-margin-after: 0em;
+    color: #1d68a7;
+    font-size: 16px;
+}
+
+.remove{
+    position: relative;
+    right: 10px;
+    top: 40px;
 }

@@ -274,7 +274,7 @@
 
         .exit {
             position: fixed;
-            margin: -20px;
+            margin: 5px;
             background-color: #e7dad9;
             padding: 10px;
             border-radius: 50%;
@@ -443,6 +443,15 @@
             width: 900px;
         }
 
+        .message {
+            margin-top: 10px;
+            width: 400px;
+        }
+
+        .subMessage {
+            margin-top: 5px;
+            width: 400px;
+        }
 
     </style>
 
