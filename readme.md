@@ -1,14 +1,14 @@
 ## Syllabus
 # Guía de instalación y configuración
 # Requerimientos: 
-      <ul>
-        <li>Arquitectura x86_64 (i386 i686 no soportado)</li>
-        <li>Apache o nginx</li>
-        <li>php >= 7.0</li>
-        <li>composer</li>
-        <li>mysql</li>
-        <li>mongodb-org</li>
-      </ul>
+
+    <li>Arquitectura x86_64 (i386 i686 no soportado)</li>
+    <li>Apache o nginx</li>
+    <li>php >= 7.0</li>
+    <li>composer</li>
+    <li>mysql</li>
+    <li>mongodb-org</li>
+
 
 # Instalación: 
 
