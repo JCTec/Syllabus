@@ -94,13 +94,13 @@
             <div class="col my-2 py-3">
                 <div class="myPlan">
                     <div class="container">
-                        <p class="h4">Diseño</p>
+                        <p class="h4">CAD</p>
                         <hr color="#e58a00" width="100%" style="height:3px">
                         <ul>
                             @foreach((array) $bloque as $materia)
                                 @php
                                     $mat = json_decode($materia, true);
-                                    if($mat['DIVISION']=='DISEÑO'){
+                                    if($mat['DIVISION']=='CAD'){
                                         echo "<li>";
                                         echo "<a class=\"SyllabusLink\" href=\"",url("mapaDeEstudios/{$mat['_id']}"),"\">";
                                         echo $mat['CARRERA'];
@@ -113,50 +113,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col my-2 py-3">
-                <div class="myPlan">
-                    <div class="container">
-                        <p class="h4">Arquitectura</p>
-                        <hr color="#e58a00" width="100%" style="height:3px">
-                        <ul>
-                            @foreach((array) $bloque as $materia)
-                                @php
-                                    $mat = json_decode($materia, true);
-                                    if($mat['DIVISION']=='ARQUITECTURA'){
-                                        echo "<li>";
-                                        echo "<a class=\"SyllabusLink\" href=\"",url("mapaDeEstudios/{$mat['_id']}"),"\">";
-                                        echo $mat['CARRERA'];
-                                        echo "</a>";
-                                        echo "</li>";
-                                    }
-                                @endphp
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col my-2 py-3">
-                <div class="myPlan">
-                    <div class="container">
-                        <p class="h4">Comunicación</p>
-                        <hr color="#e58a00" width="100%" style="height:3px">
-                        <ul>
-                            @foreach((array) $bloque as $materia)
-                                @php
-                                    $mat = json_decode($materia, true);
-                                    if($mat['DIVISION']=='COMUNICACIÓN'){
-                                        echo "<li>";
-                                        echo "<a class=\"SyllabusLink\" href=\"",url("mapaDeEstudios/{$mat['_id']}"),"\">";
-                                        echo $mat['CARRERA'];
-                                        echo "</a>";
-                                        echo "</li>";
-                                    }
-                                @endphp
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
         @endforeach
     </div>
 @endsection
