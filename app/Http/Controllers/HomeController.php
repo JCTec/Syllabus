@@ -71,7 +71,20 @@ class HomeController extends Controller
 
             $userToFind = User::select('name')->where('id', '=', $x['userID'])->first();
 
-            $subMessages = Message::where('origin', '=', $x["_id"])->get();
+            $subMessagesX = Message::where('origin', '=', $x["_id"])->get();
+
+            $subMessages = [];
+
+            foreach ($subMessagesX as $subMessage){
+                $xS = json_decode($subMessage, true);
+
+                $userToFind = User::select('name')->where('id', '=', $xS['userID'])->first();
+
+                $xS["USER"] = $userToFind->name;
+
+                array_push($subMessages, $xS);
+
+            }
 
             $x["SUB"] = $subMessages;
             $x["USER"] = $userToFind->name;
