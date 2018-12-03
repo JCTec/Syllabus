@@ -15,11 +15,11 @@
 
 <p>Syllabus se encuentra alojado en el Repositorio privado de la cuenta JCTec en Github: https://github.com/JCTec/Syllabus.git</p>
 
-$ git clone https://github.com/JCTec/Syllabus.git
+    $ git clone https://github.com/JCTec/Syllabus.git
 
-$ cd Syllabus
+    $ cd Syllabus
 
-$ composer update
+    $ composer update
 
 <p>mongodbEditar el archivo .env y agregando la siguientes variables de entorno.</p>
 
@@ -37,27 +37,27 @@ $ composer update
 <p>Editar el archivo config/database.php agregando las credenciales de la base de datos de mysql en:</p>
 
 
-'mysql' => [
-   'driver' => 'mysql',
-   'host' => '127.0.0.1',
-   'port' => '3308',
-   'database' => 'syllabus',
-   'username' => 'root',
-   'password' => '',
-   'unix_socket' => env('DB_SOCKET', ''),
-   'charset' => 'utf8mb4',
-   'collation' => 'utf8mb4_unicode_ci',
-   'prefix' => '',
-   'strict' => true,
-   'engine' => null,
-],
+    'mysql' => [
+       'driver' => 'mysql',
+       'host' => '127.0.0.1',
+       'port' => '3308',
+       'database' => 'syllabus',
+       'username' => 'root',
+       'password' => '',
+       'unix_socket' => env('DB_SOCKET', ''),
+       'charset' => 'utf8mb4',
+       'collation' => 'utf8mb4_unicode_ci',
+       'prefix' => '',
+       'strict' => true,
+       'engine' => null,
+    ],
 
-$ php artisan migrate
+    $ php artisan migrate
 
-$ php artisan key:generate 
+    $ php artisan key:generate 
 
-$ sudo chown -R www-data:www-data /ruta/Syllabus
+    $ sudo chown -R www-data:www-data /ruta/Syllabus
 
-$ sudo chmod -R 755 /ruta/Syllabus
+    $ sudo chmod -R 755 /ruta/Syllabus
 
 
