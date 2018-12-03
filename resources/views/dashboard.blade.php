@@ -6,7 +6,7 @@
             <div class="col my-2 py-3">
                 <div class="myPlan">
                     <div class="container">
-                        <p class="h4">Ciencias jurídicas y sociales</p>
+                        <p class="h4">Ciencias jurídicas y Sociales</p>
                         <hr color="#e58a00" width="100%" style="height:3px">
                         <ul>
                             @foreach((array) $bloque as $materia)
@@ -28,13 +28,13 @@
             <div class="col my-2 py-3">
                 <div class="myPlan">
                     <div class="container">
-                        <p class="h4">Ingeniería y ciencias exactas</p>
+                        <p class="h4">Ingeniería y Ciencias Exacta</p>
                         <hr color="#e58a00" width="100%" style="height:3px">
                         <ul>
                             @foreach((array) $bloque as $materia)
                                 @php
                                     $mat = json_decode($materia, true);
-                                    if($mat['DIVISION']=='Ingeniería y ciencias Exacta'){
+                                    if($mat['DIVISION']=='Ingeniería y Ciencias Exacta'){
                                         echo "<li>";
                                         echo "<a class=\"SyllabusLink\" href=\"",url("mapaDeEstudios/{$mat['_id']}"),"\">";
                                         echo $mat['CARRERA'];
@@ -50,13 +50,13 @@
             <div class="col my-2 py-3">
                 <div class="myPlan">
                     <div class="container">
-                        <p class="h4">Ciencias de la salud</p>
+                        <p class="h4">Ciencias de la Salud</p>
                         <hr color="#e58a00" width="100%" style="height:3px">
                         <ul>
                             @foreach((array) $bloque as $materia)
                                 @php
                                     $mat = json_decode($materia, true);
-                                    if($mat['DIVISION']=='Ciencias de la salud'){
+                                    if($mat['DIVISION']=='Ciencias de la Salud'){
                                         echo "<li>";
                                         echo "<a class=\"SyllabusLink\" href=\"",url("mapaDeEstudios/{$mat['_id']}"),"\">";
                                         echo $mat['CARRERA'];
