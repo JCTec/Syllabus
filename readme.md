@@ -23,16 +23,16 @@ $ composer update
 
 <p>mongodbEditar el archivo .env y agregando la siguientes variables de entorno.</p>
 
-APP_ENV=local 
-APP_DEBUG=true 
-APP_URL=http://url.servidor
+    APP_ENV=local 
+    APP_DEBUG=true 
+    APP_URL=http://url.servidor
 
-DB_CONNECTION=mongodb
-DB_HOST=127.0.0.1
-DB_PORT=27017
-DB_DATABASE=syllabus
-DB_USERNAME=
-DB_PASSWORD=
+    DB_CONNECTION=mongodb
+    DB_HOST=127.0.0.1
+    DB_PORT=27017
+    DB_DATABASE=syllabus
+    DB_USERNAME=
+    DB_PASSWORD=
 
 <p>Editar el archivo config/database.php agregando las credenciales de la base de datos de mysql en:</p>
 
