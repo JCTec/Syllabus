@@ -2,7 +2,7 @@
 # Guía de instalación y configuración
 # Requerimientos: 
 
-    <li>Arquitectura x86_64 (i386 i686 no soportado)</li>
+    <ul>Arquitectura x86_64 (i386 i686 no soportado)</ul>
     <li>Apache o nginx</li>
     <li>php >= 7.0</li>
     <li>composer</li>
