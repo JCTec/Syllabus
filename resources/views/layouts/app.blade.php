@@ -441,7 +441,6 @@
             right: 10px;
             top: 20px;
             width: 900px;
-            font-size: 16px;
         }
 
         .message {
@@ -486,7 +485,7 @@
                 <div id="nameLogo" class="row" style="text-align: right; align-content: right">
                     <div class="col"></div>
                     <div class="col">
-                        <h4 style="color: #626262">{{$nameMapa}}</h4>
+                        <h4 style="color: #626262; font-size: 16px;">{{$nameMapa}}</h4>
                     </div>
                 </div>
             @endif
