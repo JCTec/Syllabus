@@ -51,6 +51,7 @@
        'strict' => true,
        'engine' => null,
     ],
+<p>Por ultimo en la consola, se corren los siguientes comandos:</p>
 
     $ php artisan migrate
 
