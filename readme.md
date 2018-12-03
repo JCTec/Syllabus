@@ -1,22 +1,64 @@
-# iCompetence
-  <ul>
-  <li>
-    Poner la carpeta de iCompetence en Xampp:
-  </li>
-  
-  <li>
-    Modificar las variables en el archivo .env
-  </li>
-  
-  <li>
-    $ chmod -R 777 storage
-  </li>
-  
-  <li>
-    $ composer update
-  </li>
-  
-  <li>
-    $ php artisan migrate  
-  </li>
-  </ul>
+## Syllabus
+# Guía de instalación y configuración
+# Requerimientos: 
+      <ul>
+        <li>Arquitectura x86_64 (i386 i686 no soportado)</li>
+        <li>Apache o nginx</li>
+        <li>php >= 7.0</li>
+        <li>composer</li>
+        <li>mysql</li>
+        <li>mongodb-org</li>
+      </ul>
+
+# Instalación: 
+
+<p>Configurar la base de datos mysql corriendo el script syllabus.sql.</p>
+
+<p>Syllabus se encuentra alojado en el Repositorio privado de la cuenta JCTec en Github: https://github.com/JCTec/Syllabus.git</p>
+
+$ git clone https://github.com/JCTec/Syllabus.git
+
+$ cd Syllabus
+
+$ composer update
+
+<p>Editar el archivo .env y agregando la siguientes variables de entorno.</p>
+
+APP_ENV=local 
+APP_DEBUG=true 
+APP_URL=http://url.servidor
+
+DB_CONNECTION=mongodb
+DB_HOST=127.0.0.1
+DB_PORT=27017
+DB_DATABASE=syllabus
+DB_USERNAME=
+DB_PASSWORD=
+
+<p>Editar el archivo config/database.php agregando las credenciales de la base de datos de mysql en:</p>
+
+
+'mysql' => [
+   'driver' => 'mysql',
+   'host' => '127.0.0.1',
+   'port' => '3308',
+   'database' => 'syllabus',
+   'username' => 'root',
+   'password' => '',
+   'unix_socket' => env('DB_SOCKET', ''),
+   'charset' => 'utf8mb4',
+   'collation' => 'utf8mb4_unicode_ci',
+   'prefix' => '',
+   'strict' => true,
+   'engine' => null,
+],
+
+$ php artisan migrate
+
+$ php artisan key:generate 
+
+$ sudo chown -R www-data:www-data /ruta/Syllabus
+
+$ sudo chmod -R 755 /ruta/Syllabus
+
+
