@@ -2,13 +2,12 @@
 # Guía de instalación y configuración
 # Requerimientos: 
 
-    <ul>Arquitectura x86_64 (i386 i686 no soportado)</ul>
-    <li>Apache o nginx</li>
-    <li>php >= 7.0</li>
-    <li>composer</li>
-    <li>mysql</li>
-    <li>mongodb-org</li>
-
+    Arquitectura x86_64 (i386 i686 no soportado)
+    Apache o nginx
+    php >= 7.0
+    composer
+    mysql
+    org
 
 # Instalación: 
 
@@ -22,7 +21,7 @@ $ cd Syllabus
 
 $ composer update
 
-<p>Editar el archivo .env y agregando la siguientes variables de entorno.</p>
+<p>mongodbEditar el archivo .env y agregando la siguientes variables de entorno.</p>
 
 APP_ENV=local 
 APP_DEBUG=true 
